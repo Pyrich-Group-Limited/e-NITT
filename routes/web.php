@@ -155,6 +155,9 @@ use App\Http\Controllers\WarehouseTransferController;
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
+Route::get('/', function () {
+    return redirect()->route('login');
+});
 
 require __DIR__.'/auth.php';
 
@@ -163,13 +166,13 @@ require __DIR__.'/auth.php';
 //Route::get('/home', ['as' => 'home','uses' =>'HomeController@index'])->middleware(['auth','XSS']);
 
 
-Route::get('/', [DashboardController::class, 'account_dashboard_index'])->name('home')->middleware(['XSS', 'revalidate',]);
+//Route::get('/', [DashboardController::class, 'account_dashboard_index'])->name('home')->middleware(['XSS', 'revalidate',]);
 
+
+// Route::get('/', function () {
+//     return Redirect::to('login');
+// });
 Route::get('/home', [DashboardController::class, 'account_dashboard_index'])->name('home')->middleware(['XSS', 'revalidate',]);
-
-Route::get('/register', function () {
-    return Redirect::to('login');
-});
 
 
 Route::get('/login/{lang?}', [AuthenticatedSessionController::class, 'showLoginForm'])->name('login');

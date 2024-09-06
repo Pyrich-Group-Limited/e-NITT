@@ -10,6 +10,10 @@ class LandingPageSectionController extends Controller
 
     public function index()
     {
+        
+        if (!auth()->check()) {
+            return redirect()->route('login');
+        }
         if(\Auth::user()->type == 'company')
         {
             $get_section = LandingPageSection::orderBy('section_order', 'ASC')->get();
