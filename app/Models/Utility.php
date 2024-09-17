@@ -34,8 +34,8 @@ class Utility extends Model
 
 
         $settings = [
-            "site_currency" => "USD",
-            "site_currency_symbol" => "$",
+            "site_currency" => "NGN",
+            "site_currency_symbol" => "NGN",
             "site_currency_symbol_position" => "pre",
             "site_date_format" => "M j, Y",
             "site_time_format" => "g:i A",
