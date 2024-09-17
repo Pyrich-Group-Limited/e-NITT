@@ -15,7 +15,7 @@
 
 
 
-Route::resource('landingpage', LandingPageController::class);
+//Route::resource('landingpage', LandingPageController::class);
 // Route::get('landingpage/', 'LandingPageController@index')->name('landingpage.index');
 
 
