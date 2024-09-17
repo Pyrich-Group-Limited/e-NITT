@@ -100,7 +100,11 @@ class AuthenticatedSessionController extends Controller
         );
 
         //start for user log
+<<<<<<< HEAD
         if ($user->type != 'company' && $user->type != 'super admin')
+=======
+        if ($user->type != 'super admin' && $user->type != 'super admin')
+>>>>>>> james
         {
             $ip = $_SERVER['REMOTE_ADDR']; // your ip address here
 
@@ -142,7 +146,11 @@ class AuthenticatedSessionController extends Controller
 
 
 
+<<<<<<< HEAD
         if($user->type =='company' || $user->type =='client')
+=======
+        if($user->type =='super admin' || $user->type =='client')
+>>>>>>> james
         {
             return redirect()->intended(RouteServiceProvider::HOME);
 

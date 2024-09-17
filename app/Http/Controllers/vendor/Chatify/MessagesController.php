@@ -350,7 +350,11 @@ class MessagesController extends Controller
         //        $members    = User::whereIn('id', $members)->get();
 
         $objUser = Auth::user();
+<<<<<<< HEAD
         if($objUser->type == 'company')
+=======
+        if($objUser->type == 'super admin')
+>>>>>>> james
         {
             $members = User::where('type', '!=', 'client')->where('created_by', '=', $objUser->creatorId())->get();
         }

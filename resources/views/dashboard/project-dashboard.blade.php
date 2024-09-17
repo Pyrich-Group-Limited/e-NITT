@@ -103,7 +103,11 @@
 @endpush
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{__('Dashboard')}}</a></li>
+<<<<<<< HEAD
     <li class="breadcrumb-item">{{__('Project')}}</li>
+=======
+    <li class="breadcrumb-item"><b>Welcome </b>{{ Ucfirst(Auth::user()->name). "(" .Auth::user()->department->name. ")" }}</li>
+>>>>>>> james
 @endsection
 @section('content')
     <div class="row">

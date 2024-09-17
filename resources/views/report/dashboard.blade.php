@@ -14,7 +14,11 @@
         </div>
     @endif
 
+<<<<<<< HEAD
     @if(\Auth::user()->type != 'client' && \Auth::user()->type != 'company')
+=======
+    @if(\Auth::user()->type != 'client' && \Auth::user()->type != 'super admin')
+>>>>>>> james
         <div class="row mt-5">
             <div class="col-lg-6">
                 <div class="card">
@@ -193,7 +197,11 @@
                     <img src="{{ asset('assets/img/dot-icon.png') }}" alt="" class="dotted-icon"/>
                 </div>
             </div>
+<<<<<<< HEAD
             @if(\Auth::user()->type=='company')
+=======
+            @if(\Auth::user()->type=='super admin')
+>>>>>>> james
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
                     <div class="card card-box">
                         <div class="left-card">

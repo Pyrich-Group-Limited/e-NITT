@@ -12,7 +12,11 @@ class PerformanceTypeController extends Controller
     {
         if(\Auth::user()->can('manage performance type'))
         {
+<<<<<<< HEAD
             if(\Auth::user()->type == 'company')
+=======
+            if(\Auth::user()->type == 'super admin')
+>>>>>>> james
             {
                 $types = PerformanceType::where('created_by', '=', \Auth::user()->creatorId())->get();
                 return view('performanceType.index', compact('types'));
@@ -34,7 +38,11 @@ class PerformanceTypeController extends Controller
     {
         if(\Auth::user()->can('create performance type'))
         {
+<<<<<<< HEAD
             if(\Auth::user()->type == 'company')
+=======
+            if(\Auth::user()->type == 'super admin')
+>>>>>>> james
             {
                 $validator = \Validator::make(
                     $request->all(), [
@@ -81,7 +89,11 @@ class PerformanceTypeController extends Controller
 
         if(\Auth::user()->can('edit performance type'))
         {
+<<<<<<< HEAD
             if(\Auth::user()->type == 'company')
+=======
+            if(\Auth::user()->type == 'super admin')
+>>>>>>> james
             {
                 $validator = \Validator::make(
                     $request->all(), [
@@ -117,7 +129,11 @@ class PerformanceTypeController extends Controller
 
         if(\Auth::user()->can('delete performance type'))
         {
+<<<<<<< HEAD
             if(\Auth::user()->type == 'company')
+=======
+            if(\Auth::user()->type == 'super admin')
+>>>>>>> james
             {
 
                 $performanceType->delete();

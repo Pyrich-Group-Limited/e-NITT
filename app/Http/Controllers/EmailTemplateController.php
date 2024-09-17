@@ -19,7 +19,11 @@ class EmailTemplateController extends Controller
     public function index()
     {
         $usr = \Auth::user();
+<<<<<<< HEAD
         if($usr->type == 'company')
+=======
+        if($usr->type == 'super admin')
+>>>>>>> james
         {
             $EmailTemplates = EmailTemplate::all();
             return view('settings.company', compact('EmailTemplates'));
@@ -196,7 +200,11 @@ class EmailTemplateController extends Controller
     public function manageEmailLang($id, $lang = 'en')
     {
 
+<<<<<<< HEAD
         if(\Auth::user()->type == 'company')
+=======
+        if(\Auth::user()->type == 'super admin')
+>>>>>>> james
         {
             $languages         = Utility::languages();
             $LangName = Language::where('code',$lang)->first();
@@ -217,7 +225,11 @@ class EmailTemplateController extends Controller
                 $currEmailTempLang->lang = $lang;
             }
 
+<<<<<<< HEAD
             if(\Auth::user()->type == 'company')
+=======
+            if(\Auth::user()->type == 'super admin')
+>>>>>>> james
             {
                 $emailTemplate     = EmailTemplate::where('id', '=', $id)->first();
             }
@@ -295,7 +307,11 @@ class EmailTemplateController extends Controller
         $post = $request->all();
         unset($post['_token']);
         $usr = \Auth::user();
+<<<<<<< HEAD
         if($usr->type == 'super admin' || $usr->type == 'company')
+=======
+        if($usr->type == 'super admin' || $usr->type == 'super admin')
+>>>>>>> james
         {
             UserEmailTemplate::where('user_id', $usr->id)->update([ 'is_active' => 0]);
             foreach ($post as $key => $value) {

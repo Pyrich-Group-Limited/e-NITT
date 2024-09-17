@@ -8,7 +8,11 @@
     <div class="footer-wrapper">
         <div class="py-1">
             <p class="mb-0 text-muted"> &copy;
+<<<<<<< HEAD
                 {{ date('Y') }} {{ Utility::getValByName('footer_text') ? Utility::getValByName('footer_text') : config('app.name', 'ERPGo') }}
+=======
+                {{ date('Y') }} {{ Utility::getValByName('footer_text') ? Utility::getValByName('footer_text') : config('app.name', 'NITT') }}. All rights reserved
+>>>>>>> james
             </p>
         </div>
 
@@ -57,7 +61,11 @@
     @include('layouts.cookie_consent')
 @endif
 @stack('script-page')
+<<<<<<< HEAD
 
+=======
+@stack('script')
+>>>>>>> james
 
 <script>
 

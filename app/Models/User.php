@@ -37,9 +37,22 @@ class User extends Authenticatable
         'plan_expire_date',
         'requested_plan',
         'last_login_at',
+<<<<<<< HEAD
         'created_by',
     ];
 
+=======
+        'department_id',
+        'unit_id',
+        'subunit_id',
+        'level',
+    ];
+
+    public function department(){
+        return $this->belongsTo(Department::class);
+    }
+
+>>>>>>> james
     protected $hidden = [
         'password',
         'remember_token',
@@ -74,7 +87,11 @@ class User extends Authenticatable
 
     public function creatorId()
     {
+<<<<<<< HEAD
         if($this->type == 'company' || $this->type == 'super admin')
+=======
+        if($this->type == 'super admin')
+>>>>>>> james
         {
             return $this->id;
         }
@@ -86,7 +103,11 @@ class User extends Authenticatable
 
     public function ownerId()
     {
+<<<<<<< HEAD
         if($this->type == 'company' || $this->type == 'super admin')
+=======
+        if($this->type == 'super admin')
+>>>>>>> james
         {
             return $this->id;
         }
@@ -99,7 +120,11 @@ class User extends Authenticatable
     public function ownerDetails()
     {
 
+<<<<<<< HEAD
         if($this->type == 'company' || $this->type == 'super admin')
+=======
+        if($this->type == 'super admin')
+>>>>>>> james
         {
             return User::where('id', $this->id)->first();
         }
@@ -228,7 +253,11 @@ class User extends Authenticatable
             }
             $this->save();
 
+<<<<<<< HEAD
             $users     = User::where('created_by', '=', \Auth::user()->creatorId())->where('type', '!=', 'super admin')->where('type', '!=', 'company')->where('type', '!=', 'client')->get();
+=======
+            $users     = User::where('created_by', '=', \Auth::user()->creatorId())->where('type', '!=', 'super admin')->where('type', '!=', 'super admin')->where('type', '!=', 'client')->get();
+>>>>>>> james
             $clients   = User::where('type', 'client')->get();
             $customers = Customer::where('created_by', '=', $this->id)->get();
             $venders   = Vender::where('created_by', '=', $this->id)->get();
@@ -370,12 +399,20 @@ class User extends Authenticatable
 
     public function countUsers()
     {
+<<<<<<< HEAD
         return User::where('type', '!=', 'super admin')->where('type', '!=', 'company')->where('type', '!=', 'client')->where('created_by', '=', $this->creatorId())->count();
+=======
+        return User::where('type', '!=', 'super admin')->where('type', '!=', 'super admin')->where('type', '!=', 'client')->where('created_by', '=', $this->creatorId())->count();
+>>>>>>> james
     }
 
     public function countCompany()
     {
+<<<<<<< HEAD
         return User::where('type', '=', 'company')->where('created_by', '=', $this->creatorId())->count();
+=======
+        return User::where('type', '=', 'super admin')->where('created_by', '=', $this->creatorId())->count();
+>>>>>>> james
     }
 
     public function countOrder()
@@ -390,7 +427,11 @@ class User extends Authenticatable
 
     public function countPaidCompany()
     {
+<<<<<<< HEAD
         return User::where('type', '=', 'company')->whereNotIn(
+=======
+        return User::where('type', '=', 'super admin')->whereNotIn(
+>>>>>>> james
             'plan', [
                       0,
                       1,
@@ -857,7 +898,11 @@ class User extends Authenticatable
         }else{
             $user         = User::find($this->id);
         }
+<<<<<<< HEAD
         if($user->type=='company'){
+=======
+        if($user->type=='super admin'){
+>>>>>>> james
             return ProjectTask::where('created_by',$user->creatorId())->get();
         }else{
             return ProjectTask::whereRaw("find_in_set('" . $this->id . "',assign_to)")->get();
@@ -889,7 +934,11 @@ class User extends Authenticatable
 
     public function total_lead()
     {
+<<<<<<< HEAD
         if(\Auth::user()->type == 'company')
+=======
+        if(\Auth::user()->type == 'super admin')
+>>>>>>> james
         {
             return Lead::where('created_by', '=', $this->creatorId())->count();
         }
@@ -922,7 +971,11 @@ class User extends Authenticatable
 
     public function created_total_project_task()
     {
+<<<<<<< HEAD
         if(\Auth::user()->type == 'company')
+=======
+        if(\Auth::user()->type == 'super admin')
+>>>>>>> james
         {
             return ProjectTask::join('projects', 'projects.id', '=', 'project_tasks.project_id')->where('projects.created_by', '=', $this->creatorId())->count();
         }
@@ -939,7 +992,11 @@ class User extends Authenticatable
 
     public function project_complete_task($project_last_stage)
     {
+<<<<<<< HEAD
         if(\Auth::user()->type == 'company')
+=======
+        if(\Auth::user()->type == 'super admin')
+>>>>>>> james
         {
             return ProjectTask::join('projects', 'projects.id', '=', 'project_tasks.project_id')->where('projects.created_by', '=', $this->creatorId())->where('project_tasks.stage_id', '=', $project_last_stage)->count();
         }
@@ -957,7 +1014,11 @@ class User extends Authenticatable
 
     public function created_top_due_task()
     {
+<<<<<<< HEAD
         if(\Auth::user()->type == 'company')
+=======
+        if(\Auth::user()->type == 'super admin')
+>>>>>>> james
         {
             return ProjectTask::select('projects.*', 'project_tasks.id as task_id', 'project_tasks.name', 'project_tasks.end_date as task_due_date', 'project_tasks.assign_to', 'projectstages.name as stage_name')->join('projects', 'projects.id', '=', 'project_tasks.project_id')->join('projectstages', 'project_tasks.stage_id', '=', 'projectstages.id')->where('projects.created_by', '=', \Auth::user()->creatorId())->where('project_tasks.end_date', '>', date('Y-m-d'))->limit(5)->orderBy('task_due_date', 'ASC')->get();
         }
@@ -979,7 +1040,11 @@ class User extends Authenticatable
     {
         $user_type = \Auth::user()->type;
 
+<<<<<<< HEAD
         if($user_type == 'company' || $user_type == 'super admin')
+=======
+        if($user_type == 'super admin')
+>>>>>>> james
         {
             $user = User::where('id', \Auth::user()->id)->first();
 
@@ -995,7 +1060,11 @@ class User extends Authenticatable
     public static function show_hrm()
     {
         $user_type = \Auth::user()->type;
+<<<<<<< HEAD
         if($user_type == 'company' || $user_type == 'super admin')
+=======
+        if($user_type == 'super admin')
+>>>>>>> james
         {
             $user = User::where('id', \Auth::user()->id)->first();
         }
@@ -1011,7 +1080,11 @@ class User extends Authenticatable
     public static function show_account()
     {
         $user_type = \Auth::user()->type;
+<<<<<<< HEAD
         if($user_type == 'company' || $user_type == 'super admin')
+=======
+        if($user_type == 'super admin')
+>>>>>>> james
         {
             $user = User::where('id', \Auth::user()->id)->first();
         }
@@ -1026,7 +1099,11 @@ class User extends Authenticatable
     public static function show_project()
     {
         $user_type = \Auth::user()->type;
+<<<<<<< HEAD
         if($user_type == 'company' || $user_type == 'super admin')
+=======
+        if($user_type == 'super admin')
+>>>>>>> james
         {
             $user = User::where('id', \Auth::user()->id)->first();
         }
@@ -1041,7 +1118,11 @@ class User extends Authenticatable
     public static function show_pos()
     {
         $user_type = \Auth::user()->type;
+<<<<<<< HEAD
         if($user_type == 'company' || $user_type == 'super admin')
+=======
+        if($user_type == 'super admin')
+>>>>>>> james
         {
             $user = User::where('id', \Auth::user()->id)->first();
         }

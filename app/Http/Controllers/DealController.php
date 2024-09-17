@@ -264,7 +264,11 @@ class DealController extends Controller
                     );
                 }
 
+<<<<<<< HEAD
                 if($usr->type=='company'){
+=======
+                if($usr->type=='super admin'){
+>>>>>>> james
                     $usrDeals = [
                         $usr->id,
 

@@ -195,7 +195,11 @@ class ProjectTaskController extends Controller
             }
 
             $tasks = ProjectTask::whereIn('project_id', $user_projects);
+<<<<<<< HEAD
             if (\Auth::user()->type != 'company')
+=======
+            if (\Auth::user()->type != 'super admin')
+>>>>>>> james
             {
                 if (\Auth::user()->type == 'client')
                 {
@@ -235,7 +239,11 @@ class ProjectTaskController extends Controller
             $sort = explode('-', $request->sort);
 //            $task = ProjectTask::whereIn('project_id', $user_projects)->get();
             $tasks = ProjectTask::whereIn('project_id', $user_projects)->orderBy($sort[0], $sort[1]);
+<<<<<<< HEAD
             if (\Auth::user()->type != 'company') {
+=======
+            if (\Auth::user()->type != 'super admin') {
+>>>>>>> james
                 if (\Auth::user()->type == 'client') {
                     $tasks->where('created_by', \Auth::user()->creatorId());
 
@@ -266,7 +274,11 @@ class ProjectTaskController extends Controller
                 }
 
 
+<<<<<<< HEAD
 //                if(in_array('see_my_tasks', $request->status) && \Auth::user()->type!='company')
+=======
+//                if(in_array('see_my_tasks', $request->status) && \Auth::user()->type!='super admin')
+>>>>>>> james
 //                {
 //                    $tasks->whereRaw("find_in_set('" . $usr->id . "',assign_to)");
 //                }
@@ -301,10 +313,17 @@ class ProjectTaskController extends Controller
     public function allBugList($view)
     {
           $bugStatus = BugStatus::where('created_by',\Auth::user()->creatorId())->get();
+<<<<<<< HEAD
           if(Auth::user()->type == 'company'){
             $bugs = Bug::where('created_by',\Auth::user()->creatorId())->get();
           }
           elseif(Auth::user()->type != 'company'){
+=======
+          if(Auth::user()->type == 'super admin'){
+            $bugs = Bug::where('created_by',\Auth::user()->creatorId())->get();
+          }
+          elseif(Auth::user()->type != 'super admin'){
+>>>>>>> james
             if(\Auth::user()->type == 'client'){
               $user_projects = Project::where('client_id',\Auth::user()->id)->pluck('id','id')->toArray();
               $bugs = Bug::whereIn('project_id', $user_projects)->where('created_by',\Auth::user()->creatorId())->get();
@@ -1028,10 +1047,17 @@ class ProjectTaskController extends Controller
               $user_projects = $usr->projects()->pluck('project_id','project_id')->toArray();
             }
             $user_projects = (!empty($project_id) && $project_id > 0) ? [$project_id] : $user_projects;
+<<<<<<< HEAD
             if(\Auth::user()->type == 'company'){
               $tasks = ProjectTask::whereIn('project_id', $user_projects);
             }
             elseif(\Auth::user()->type != 'company'){
+=======
+            if(\Auth::user()->type == 'super admin'){
+              $tasks = ProjectTask::whereIn('project_id', $user_projects);
+            }
+            elseif(\Auth::user()->type != 'super admin'){
+>>>>>>> james
               if(\Auth::user()->type == 'client'){
                 $tasks = ProjectTask::whereIn('project_id', $user_projects);
               }
@@ -1133,7 +1159,11 @@ class ProjectTaskController extends Controller
                 $data = ProjectTask::whereIn('project_id', $user_projects)->get();
             }
             else{
+<<<<<<< HEAD
                 if(Auth::user()->type == 'company')
+=======
+                if(Auth::user()->type == 'super admin')
+>>>>>>> james
                 {
                     $data = ProjectTask::where('created_by', \Auth::user()->creatorId())->get();
                 }else

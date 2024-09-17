@@ -46,7 +46,11 @@ use App\Models\Utility;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+<<<<<<< HEAD
 
+=======
+use Illuminate\Support\Facades\Session;
+>>>>>>> james
 class DashboardController extends Controller
 {
     /**
@@ -63,6 +67,40 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+<<<<<<< HEAD
+=======
+
+     public function unit_dashboard(){
+        return view('dashboard.unit-dashboard');
+     }
+
+     public function liason_dashboard(){
+
+        $pos_data=[];
+                $pos_data['monthlyPosAmount'] = Pos::totalPosAmount(true);
+                $pos_data['totalPosAmount'] = Pos::totalPosAmount();
+                $pos_data['monthlyPurchaseAmount'] = Purchase::totalPurchaseAmount(true);
+                $pos_data['totalPurchaseAmount'] = Purchase::totalPurchaseAmount();
+
+                $purchasesArray = Purchase::getPurchaseReportChart();
+                $posesArray = Pos::getPosReportChart();
+
+        return view('dashboard.liason-dashboard',compact('pos_data','purchasesArray','posesArray'));
+     }
+
+     public function user_dashboard(){
+        return view('dashboard.user-dashboard');
+     }
+
+     public function store_dashboard(){
+        return view('dashboard.store-dashboard');
+     }
+
+     public function supervisor_dashboard(){
+        return view('dashboard.supervisor-dashboard');
+     }
+
+>>>>>>> james
     public function account_dashboard_index()
     {
 
@@ -72,6 +110,25 @@ class DashboardController extends Controller
             {
                 return redirect()->route('client.dashboard.view');
             }
+<<<<<<< HEAD
+=======
+            elseif(Auth::user()->type == 'unit head')
+            {
+                return redirect()->route('unit.dashboard');
+            }
+            elseif(Auth::user()->type == 'liason office head')
+            {
+                return redirect()->route('liason.dashboard');
+            }
+            elseif(Auth::user()->type == 'user')
+            {
+                return redirect()->route('user.dashboard');
+            }
+            elseif(Auth::user()->type == 'store keeper')
+            {
+                return redirect()->route('store.dashboard');
+            }
+>>>>>>> james
             else
             {
                 if(\Auth::user()->can('show account dashboard'))
@@ -156,8 +213,15 @@ class DashboardController extends Controller
 
                 if ($settings['display_landing_page'] == 'on' && \Schema::hasTable('landing_page_settings'))
                 {
+<<<<<<< HEAD
 
                     return view('landingpage::layouts.landingpage', compact('settings'));
+=======
+                    return redirect('login');
+
+
+                    //return view('landingpage::layouts.landingpage', compact('settings'));
+>>>>>>> james
                 }
                 else
                 {
@@ -265,12 +329,20 @@ class DashboardController extends Controller
 
     public function hrm_dashboard_index()
     {
+<<<<<<< HEAD
+=======
+
+>>>>>>> james
         if(Auth::check())
         {
             if(\Auth::user()->can('show hrm dashboard'))
             {
                 $user = Auth::user();
+<<<<<<< HEAD
                 if($user->type != 'client' && $user->type != 'company')
+=======
+                if($user->type != 'client' && $user->type != 'super admin')
+>>>>>>> james
                 {
                     $emp = Employee::where('user_id', '=', $user->id)->first();
 
@@ -340,10 +412,17 @@ class DashboardController extends Controller
                     $announcements = Announcement::orderBy('announcements.id', 'desc')->take(5)->where('created_by', '=', \Auth::user()->creatorId())->get();
 
 
+<<<<<<< HEAD
                     $emp           = User::where('type', '!=', 'client')->where('type', '!=', 'company')->where('created_by', '=', \Auth::user()->creatorId())->get();
                     $countEmployee = count($emp);
 
                     $user      = User::where('type', '!=', 'client')->where('type', '!=', 'company')->where('created_by', '=', \Auth::user()->creatorId())->get();
+=======
+                    $emp           = User::where('type', '!=', 'client')->where('type', '!=', 'super admin')->where('created_by', '=', \Auth::user()->creatorId())->get();
+                    $countEmployee = count($emp);
+
+                    $user      = User::where('type', '!=', 'client')->where('type', '!=', 'super admin')->where('created_by', '=', \Auth::user()->creatorId())->get();
+>>>>>>> james
                     $countUser = count($user);
 
 
@@ -502,6 +581,10 @@ class DashboardController extends Controller
     public function filterView(Request $request)
     {
         $usr   = Auth::user();
+<<<<<<< HEAD
+=======
+        dd($usr);
+>>>>>>> james
         $users = User::where('id', '!=', $usr->id);
 
         if($request->ajax())

@@ -52,7 +52,11 @@
                             <tr>
                                 <th>{{__('Name')}}</th>
                                 <th>{{__('Response')}}</th>
+<<<<<<< HEAD
                                 @if(\Auth::user()->type=='company')
+=======
+                                @if(\Auth::user()->type=='super admin')
+>>>>>>> james
                                     <th class="text-end" width="200px">{{__('Action')}}</th>
                                 @endif
                             </tr>
@@ -64,7 +68,11 @@
                                     <td>
                                         {{ $form->response->count() }}
                                     </td>
+<<<<<<< HEAD
                                     @if(\Auth::user()->type=='company')
+=======
+                                    @if(\Auth::user()->type=='super admin')
+>>>>>>> james
                                         <td class="text-end">
 
 

@@ -5,7 +5,11 @@
             {{-- Avatar side --}}
             <td>
                 <div class="avatar av-m" style="background-color: #D9EFFF; text-align: center;">
+<<<<<<< HEAD
                     <span class="ti ti-bookmark" style="font-size: 22px; color: #6FD943;"></span>
+=======
+                    <span class="ti ti-bookmark" style="font-size: 22px; color: #0C7885;"></span>
+>>>>>>> james
                 </div>
             </td>
             {{-- center side --}}

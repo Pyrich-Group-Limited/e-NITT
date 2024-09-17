@@ -7,6 +7,10 @@ use App\Models\JoiningLetter;
 use App\Models\NOC;
 use App\Models\User;
 use App\Models\Utility;
+use App\Models\Designation;
+use App\Models\Department;
+use App\Models\Unit;
+use App\Models\Subunit;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Permission;
@@ -31,6 +35,12 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'name' => 'show crm dashboard',
+                'guard_name' => 'web',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'name' => 'show unithead dashboard',
                 'guard_name' => 'web',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
@@ -3061,93 +3071,48 @@ class UsersTableSeeder extends Seeder
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
+            [
+                'name' => 'show profile',
+                'guard_name' => 'web',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [   'name' => 'manage user',
+                'guard_name' => 'web',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [   'name' => 'manage role',
+                'guard_name' => 'web',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [   'name' => 'manage client',
+                'guard_name' => 'web',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [   'name' => 'view leave report',
+                'guard_name' => 'web',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
         ];
 
         Permission::insert($arrPermissions);
 
-        // Super admin
 
-        $superAdminRole        = Role::create(
+        // Super Admin
+
+        $companyRole = Role::create(
             [
                 'name' => 'super admin',
                 'created_by' => 0,
             ]
         );
-        $superAdminPermissions = [
-            ['name' => 'manage super admin dashboard'],
-            ['name' => 'manage user'],
-            ['name' => 'create user'],
-            ['name' => 'edit user'],
-            ['name' => 'delete user'],
-            ['name' => 'create language'],
-            ['name' => 'manage system settings'],
-            ['name' => 'manage stripe settings'],
-            ['name' => 'manage role'],
-            ['name' => 'create role'],
-            ['name' => 'edit role'],
-            ['name' => 'delete role'],
-            ['name' => 'manage permission'],
-            ['name' => 'create permission'],
-            ['name' => 'edit permission'],
-            ['name' => 'delete permission'],
-            ['name' => 'manage plan'],
-            ['name' => 'create plan'],
-            ['name' => 'edit plan'],
-            ['name' => 'manage order'],
-            ['name' => 'manage coupon'],
-            ['name' => 'create coupon'],
-            ['name' => 'edit coupon'],
-            ['name' => 'delete coupon'],
-        ];
-
-
-
-        // custome
-        $customerRole       = Role::create(
-            [
-                'name' => 'customer',
-                'created_by' => 0,
-            ]
-        );
-        $customerPermission = [
-            ['name' => 'manage customer payment'],
-            ['name' => 'manage customer transaction'],
-            ['name' => 'manage customer invoice'],
-            ['name' => 'show invoice'],
-            ['name' => 'show proposal'],
-            ['name' => 'manage customer proposal'],
-            ['name' => 'show customer'],
-        ];
-        $customerRole->givePermissionTo($customerPermission);
-
-        // vender
-        $venderRole       = Role::create(
-            [
-                'name' => 'vender',
-                'created_by' => 0,
-            ]
-        );
-        $venderPermission = [
-            ['name' => 'vender manage bill'],
-            ['name' => 'manage vender bill'],
-            ['name' => 'manage vender payment'],
-            ['name' => 'manage vender transaction'],
-            ['name' => 'show vender'],
-            ['name' => 'show bill'],
-        ];
-
-        $venderRole->givePermissionTo($venderPermission);
-
-        // company
-
-        $companyRole = Role::create(
-            [
-                'name' => 'company',
-                'created_by' => 0,
-            ]
-        );
 
         $companyPermissions = [
+            ['name' => 'view leave report'],
             ['name' => 'show pos dashboard'],
             ['name' => 'show crm dashboard'],
             ['name' => 'show hrm dashboard'],
@@ -3644,10 +3609,14 @@ class UsersTableSeeder extends Seeder
 
         $company = User::create(
             [
-                'name' => 'company',
-                'email' => 'company@nitt.gov.ng',
+                'name' => 'SuperAdmin/Paperless',
+                'email' => 'spadmin@nitt.gov.ng',
+                'designation' => Designation::first()->name,
+                'department_id' => Department::first()->id,
+                'unit_id' => Department::first()->units->first()->id,
+                'level' => "Level 08",
                 'password' => Hash::make('1234'),
-                'type' => 'company',
+                'type' => 'super admin',
                 'default_pipeline' => 1,
                 'plan' => 1,
                 'lang' => 'en',
@@ -3657,6 +3626,295 @@ class UsersTableSeeder extends Seeder
         );
         $company->assignRole($companyRole);
 
+
+        // user
+        $userRole       = Role::create(
+            [
+                'name' => 'user',
+                'created_by' => 0,
+            ]
+        );
+        $userPermission = [
+            ['name' => 'show invoice'],
+            ['name' => 'show proposal'],
+            ['name' => 'show profile'],
+        ];
+        $userRole->givePermissionTo($userPermission);
+
+        $user = User::create(
+            [
+                'name' => 'User',
+                'email' => 'user@nitt.gov.ng',
+                'password' => Hash::make('1234'),
+                'designation' => Designation::first()->name,
+                'department_id' => Department::first()->id,
+                'unit_id' => Department::first()->units->first()->id,
+                'level' => "Level 08",
+                'type' => 'user',
+                'default_pipeline' => 1,
+                'lang' => 'en',
+                'avatar' => '',
+                'created_by' => $company->id,
+            ]
+        );
+        $user->assignRole($userRole);
+
+
+        // supervisor
+        $supervisorRole = Role::create(
+            [
+                'name' => 'supervisor',
+                'created_by' => 0,
+            ]
+        );
+        $supervisorPermission = [
+            ['name' => 'show invoice'],
+            ['name' => 'show proposal'],
+            ['name' => 'show profile'],
+            ['name' => 'manage client dashboard'],
+            ['name' => 'manage bug report'],
+            ['name' => 'create bug report'],
+            ['name' => 'edit bug report'],
+            ['name' => 'delete bug report'],
+            ['name' => 'move bug report'],
+            ['name' => 'view deal'],
+            ['name' => 'manage deal'],
+            ['name' => 'manage project'],
+            ['name' => 'view project'],
+            ['name' => 'view grant chart'],
+            ['name' => 'view timesheet'],
+            ['name' => 'manage timesheet'],
+            ['name' => 'manage project task'],
+            ['name' => 'create project task'],
+            ['name' => 'edit project task'],
+            ['name' => 'view project task'],
+            ['name' => 'delete project task'],
+            ['name' => 'view activity'],
+            ['name' => 'view task'],
+            ['name' => 'manage pipeline'],
+            ['name' => 'manage lead stage'],
+            ['name' => 'manage label'],
+            ['name' => 'manage source'],
+            ['name' => 'move deal'],
+            ['name' => 'manage stage'],
+            ['name' => 'manage contract'],
+            ['name' => 'show contract'],
+        ];
+        $supervisorRole->givePermissionTo($supervisorPermission);
+
+        $supervisor = User::create(
+            [
+                'name' => 'Supervisor',
+                'email' => 'supervisor@nitt.gov.ng',
+                'password' => Hash::make('1234'),
+                'type' => 'supervisor',
+                'default_pipeline' => 1,
+                'lang' => 'en',
+                'avatar' => '',
+                'created_by' => $company->id,
+                'designation' => Designation::first()->name,
+                'department_id' => Department::first()->id,
+                'unit_id' => Department::first()->units->first()->id,
+                'level' => "Level 08",
+            ]
+        );
+        $supervisor->assignRole($supervisorRole);
+
+
+         // Liason office head
+         $liasonRole = Role::create(
+            [
+                'name' => 'liason office head',
+                'created_by' => 0,
+            ]
+        );
+        $liasonPermission = [
+            ['name' => 'view leave report'],
+            ['name' => 'create budget plan'],
+            ['name' => 'show invoice'],
+            ['name' => 'show proposal'],
+            ['name' => 'show profile'],
+            ['name' => 'manage client dashboard'],
+            ['name' => 'manage bug report'],
+            ['name' => 'create bug report'],
+            ['name' => 'edit bug report'],
+            ['name' => 'delete bug report'],
+            ['name' => 'move bug report'],
+            ['name' => 'view deal'],
+            ['name' => 'manage deal'],
+            ['name' => 'manage project'],
+            ['name' => 'view project'],
+            ['name' => 'view grant chart'],
+            ['name' => 'view timesheet'],
+            ['name' => 'manage timesheet'],
+            ['name' => 'manage project task'],
+            ['name' => 'create project task'],
+            ['name' => 'edit project task'],
+            ['name' => 'view project task'],
+            ['name' => 'delete project task'],
+            ['name' => 'view activity'],
+            ['name' => 'view task'],
+            ['name' => 'manage pipeline'],
+            ['name' => 'manage lead stage'],
+            ['name' => 'manage label'],
+            ['name' => 'manage source'],
+            ['name' => 'move deal'],
+            ['name' => 'manage stage'],
+            ['name' => 'manage contract'],
+            ['name' => 'show contract'],
+        ];
+        $liasonRole->givePermissionTo($liasonPermission);
+
+        $liason = User::create(
+            [
+                'name' => 'Head of Liason Office',
+                'email' => 'liason@nitt.gov.ng',
+                'password' => Hash::make('1234'),
+                'type' => 'liason office head',
+                'default_pipeline' => 1,
+                'lang' => 'en',
+                'avatar' => '',
+                'created_by' => $company->id,
+                'designation' => Designation::first()->name,
+                'department_id' => Department::first()->id,
+                'unit_id' => Department::first()->units->first()->id,
+                'level' => "Level 08",
+            ]
+        );
+        $liason->assignRole($liasonRole);
+
+
+
+         // unit head
+         $unitHeadRole       = Role::create(
+            [
+                'name' => 'unit head',
+                'created_by' => $company->id,
+            ]
+        );
+        $unitHeadPermission = [
+            ['name' => 'view leave report'],
+            ['name' => 'show unithead dashboard'],
+            ['name' => 'manage client dashboard'],
+            ['name' => 'manage bug report'],
+            ['name' => 'create bug report'],
+            ['name' => 'edit bug report'],
+            ['name' => 'delete bug report'],
+            ['name' => 'move bug report'],
+            ['name' => 'view deal'],
+            ['name' => 'manage deal'],
+            ['name' => 'manage project'],
+            ['name' => 'view project'],
+            ['name' => 'view grant chart'],
+            ['name' => 'view timesheet'],
+            ['name' => 'manage timesheet'],
+            ['name' => 'manage project task'],
+            ['name' => 'create project task'],
+            ['name' => 'edit project task'],
+            ['name' => 'view project task'],
+            ['name' => 'delete project task'],
+            ['name' => 'view activity'],
+            ['name' => 'view task'],
+            ['name' => 'manage pipeline'],
+            ['name' => 'manage lead stage'],
+            ['name' => 'manage label'],
+            ['name' => 'manage source'],
+            ['name' => 'move deal'],
+            ['name' => 'manage stage'],
+            ['name' => 'manage contract'],
+            ['name' => 'show contract'],
+            ['name' => 'view budget plan'],
+            ['name' => 'manage report'],
+        ];
+
+        $unitHeadRole->givePermissionTo($unitHeadPermission);
+
+        $unitHead = User::create(
+            [
+                'name' => 'Unit Head',
+                'email' => 'unit@nitt.gov.ng',
+                'password' => Hash::make('1234'),
+                'type' => 'unit head',
+                'default_pipeline' => 1,
+                'lang' => 'en',
+                'avatar' => '',
+                'created_by' => $company->id,
+                'designation' => Designation::first()->name,
+                'department_id' => Department::first()->id,
+                'unit_id' => Department::first()->units->first()->id,
+                'level' => "Level 08",
+            ]
+        );
+        $unitHead->assignRole($unitHeadRole);
+
+
+         // store/assets
+         $storeKeeperRole       = Role::create(
+            [
+                'name' => 'store keeper',
+                'created_by' => $company->id,
+            ]
+        );
+        $storePermission = [
+            ['name' => 'manage product & service'],
+            ['name' => 'manage warehouse'],
+            ['name' => 'manage purchase'],
+            ['name' => 'manage pos'],
+            ['name' => 'manage warehouse'],
+            ['name' => 'create barcode'],
+            ['name' => 'manage pos'],
+            ['name' => 'show unithead dashboard'],
+            ['name' => 'manage client dashboard'],
+            ['name' => 'manage bug report'],
+            ['name' => 'create bug report'],
+            ['name' => 'edit bug report'],
+            ['name' => 'delete bug report'],
+            ['name' => 'move bug report'],
+            ['name' => 'view deal'],
+            ['name' => 'manage deal'],
+            ['name' => 'manage project'],
+            ['name' => 'view project'],
+            ['name' => 'view grant chart'],
+            ['name' => 'view timesheet'],
+            ['name' => 'manage timesheet'],
+            ['name' => 'manage project task'],
+            ['name' => 'create project task'],
+            ['name' => 'edit project task'],
+            ['name' => 'view project task'],
+            ['name' => 'delete project task'],
+            ['name' => 'view activity'],
+            ['name' => 'view task'],
+            ['name' => 'manage pipeline'],
+            ['name' => 'manage lead stage'],
+            ['name' => 'manage label'],
+            ['name' => 'manage source'],
+            ['name' => 'move deal'],
+            ['name' => 'manage stage'],
+            ['name' => 'manage contract'],
+            ['name' => 'show contract'],
+        ];
+
+        $storeKeeperRole->givePermissionTo($storePermission);
+
+        $storeKeeper = User::create(
+            [
+                'name' => 'Store / Assets',
+                'email' => 'store@nitt.gov.ng',
+                'password' => Hash::make('1234'),
+                'type' => 'store keeper',
+                'default_pipeline' => 1,
+                'lang' => 'en',
+                'avatar' => '',
+                'created_by' => $company->id,
+                'designation' => Designation::first()->name,
+                'department_id' => Department::first()->id,
+                'unit_id' => Department::first()->units->first()->id,
+                'level' => "Level 08",
+            ]
+        );
+        $storeKeeper->assignRole($storeKeeperRole);
+
+
         // accountant
         $accountantRole       = Role::create(
             [
@@ -3665,6 +3923,11 @@ class UsersTableSeeder extends Seeder
             ]
         );
         $accountantPermission = [
+            ['name' => 'manage purchase'],
+            ['name' => 'manage pos'],
+            ['name' => 'manage warehouse'],
+            ['name' => 'create barcode'],
+            ['name' => 'manage pos'],
             ['name' => 'show account dashboard'],
             ['name' => 'manage expense'],
             ['name' => 'create expense'],
@@ -3798,7 +4061,7 @@ class UsersTableSeeder extends Seeder
 
         $accountant = User::create(
             [
-                'name' => 'accountant',
+                'name' => 'Accountant/ Bursar',
                 'email' => 'accountant@nitt.gov.ng',
                 'password' => Hash::make('1234'),
                 'type' => 'accountant',
@@ -3806,6 +4069,10 @@ class UsersTableSeeder extends Seeder
                 'lang' => 'en',
                 'avatar' => '',
                 'created_by' => $company->id,
+                'designation' => Designation::first()->name,
+                'department_id' => Department::first()->id,
+                'unit_id' => Department::first()->units->first()->id,
+                'level' => "Level 08",
             ]
         );
         $accountant->assignRole($accountantRole);
@@ -3830,6 +4097,40 @@ class UsersTableSeeder extends Seeder
             ]
         );
         $clientPermission = [
+            ['name' => 'view leave report'],
+            ['name' => 'show hrm dashboard'],
+            ['name' => 'manage employee'],
+            ['name' => 'manage leave'],
+            ['name' => 'manage indicator'],
+            ['name' => 'manage appraisal'],
+            ['name' => 'manage goal tracking'],
+            ['name' => 'manage training'],
+            ['name' => 'manage job'],
+            ['name' => 'create job'],
+            ['name' => 'manage job application'],
+            ['name' => 'manage custom question'],
+            ['name' => 'show interview schedule'],
+            ['name' => 'manage award'],
+            ['name' => 'manage transfer'],
+            ['name' => 'manage resignation'],
+            ['name' => 'manage travel'],
+            ['name' => 'manage promotion'],
+            ['name' => 'manage complaint'],
+            ['name' => 'manage warning'],
+            ['name' => 'manage termination'],
+            ['name' => 'manage announcement'],
+            ['name' => 'manage holiday'],
+            ['name' => 'manage event'],
+            ['name' => 'manage meeting'],
+            ['name' => 'manage assets'],
+            ['name' => 'manage document'],
+            ['name' => 'manage company policy'],
+
+            ['name' => 'show career'],
+            ['name' => 'manage report'],
+            ['name' => 'manage user'],
+            ['name' => 'manage role'],
+            ['name' => 'manage client'],
             ['name' => 'manage client dashboard'],
             ['name' => 'manage bug report'],
             ['name' => 'create bug report'],
@@ -3864,14 +4165,18 @@ class UsersTableSeeder extends Seeder
 
         $client = User::create(
             [
-                'name' => 'client',
-                'email' => 'client@nitt.gov.ng',
+                'name' => 'HRM/Registra',
+                'email' => 'hrm@nitt.gov.ng',
                 'password' => Hash::make('1234'),
                 'type' => 'client',
                 'default_pipeline' => 1,
                 'lang' => 'en',
                 'avatar' => '',
                 'created_by' => $company->id,
+                'designation' => Designation::first()->name,
+                'department_id' => Department::first()->id,
+                'unit_id' => Department::first()->units->first()->id,
+                'level' => "Level 08",
             ]
         );
         $client->assignRole($clientRole);

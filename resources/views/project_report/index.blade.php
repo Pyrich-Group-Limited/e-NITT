@@ -30,7 +30,11 @@
 @endpush
 
 @section('content')
+<<<<<<< HEAD
     @if(Auth::user()->type == 'company')
+=======
+    @if(Auth::user()->type == 'super admin')
+>>>>>>> james
         <div class="row">
             <div class="col-sm-12">
                 <div class="mt-2 " >

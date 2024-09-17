@@ -1,7 +1,11 @@
 @php
     $users=\Auth::user();
     //$profile=asset(Storage::url('uploads/avatar/'));
+<<<<<<< HEAD
     $profile=\App\Models\Utility::get_file('uploads/avatar/');
+=======
+    $profile=\App\Models\Utility::get_file('uploads/');
+>>>>>>> james
     $languages=\App\Models\Utility::languages();
    $lang = isset($users->lang)?$users->lang:'en';
     if ($lang == null) {
@@ -46,7 +50,11 @@
                         aria-expanded="false"
                     >
                         <span class="theme-avtar">
+<<<<<<< HEAD
                              <img src="{{ !empty(\Auth::user()->avatar) ? $profile . \Auth::user()->avatar :  $profile.'avatar.png'}}" class="img-fluid rounded-circle">
+=======
+                             <img src="{{ !empty(\Auth::user()->avatar) ? $profile . \Auth::user()->avatar :  asset('uploads/user.png')}}" class="img-fluid rounded-circle">
+>>>>>>> james
                         </span>
                         <span class="hide-mob ms-2">{{__('Hi, ')}}{{\Auth::user()->name }} !</span>
                         <i class="ti ti-chevron-down drp-arrow nocolor hide-mob"></i>
@@ -112,7 +120,11 @@
                             </a>
                         @endforeach
                         <h></h>
+<<<<<<< HEAD
                             @if(\Auth::user()->type=='company')
+=======
+                            @if(\Auth::user()->type=='super admin')
+>>>>>>> james
                             <a  data-url="{{ route('create.language') }}" class="dropdown-item text-primary"  data-ajax-popup="true" data-title="{{__('Create New Language')}}">
                                 {{ __('Create Language') }}
                             </a>

@@ -52,7 +52,11 @@
     <link rel="icon" href="{{$logo.'/'.(isset($company_favicon) && !empty($company_favicon)?$company_favicon:'favicon.png')}}" type="image" sizes="16x16">
 
     <!-- Favicon icon -->
+<<<<<<< HEAD
 {{--    <link rel="icon" href="{{ asset('assets/images/favicon.svg') }}" type="image/x-icon"/>--}}
+=======
+   <link rel="icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon"/>
+>>>>>>> james
     <!-- Calendar-->
     <link rel="stylesheet" href="{{ asset('assets/css/plugins/main.css') }}">
 
@@ -265,5 +269,9 @@
 
 @include('partials.admin.footer')
 @include('Chatify::layouts.footerLinks')
+<<<<<<< HEAD
+=======
+
+>>>>>>> james
 </body>
 </html>

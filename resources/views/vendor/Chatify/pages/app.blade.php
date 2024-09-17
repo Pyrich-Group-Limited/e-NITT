@@ -224,6 +224,7 @@
         .m-list-active,
         .m-list-active:hover,
         .m-list-active:focus {
+<<<<<<< HEAD
             background: linear-gradient(141.55deg, #584ED2 3.46%, #584ED2 99.86%), #584ED2 !important;
         }
 
@@ -233,11 +234,23 @@
 
         .messenger-favorites div.avatar {
             box-shadow: 0px 0px 0px 2px #584ED2 !important;
+=======
+            background: linear-gradient(141.55deg, #0C7885 3.46%, #0C7885 99.86%), #0C7885 !important;
+        }
+
+        .mc-sender p {
+            background: linear-gradient(141.55deg, #0C7885 3.46%, #0C7885 99.86%), #0C7885 !important;
+        }
+
+        .messenger-favorites div.avatar {
+            box-shadow: 0px 0px 0px 2px #0C7885 !important;
+>>>>>>> james
         }
 
         .messenger-listView-tabs a,
         .messenger-listView-tabs a:hover,
         .messenger-listView-tabs a:focus {
+<<<<<<< HEAD
             color: linear-gradient(141.55deg, #584ED2 3.46%, #584ED2 99.86%), #584ED2 !important;
         }
 
@@ -247,25 +260,52 @@
 
         .active-tab {
             border-bottom: 2px solid #584ED2 !important;
+=======
+            color: linear-gradient(141.55deg, #0C7885 3.46%, #0C7885 99.86%), #0C7885 !important;
+        }
+
+        .m-header svg {
+            color: #0C7885 !important;
+        }
+
+        .active-tab {
+            border-bottom: 2px solid #0C7885 !important;
+>>>>>>> james
         }
 
         .messenger-infoView nav a {
 
+<<<<<<< HEAD
             color: linear-gradient(141.55deg, #584ED2 3.46%, #584ED2 99.86%), #584ED2 !important;
         }
 
         .lastMessageIndicator {
             color: #584ED2 !important;
+=======
+            color: linear-gradient(141.55deg, #0C7885 3.46%, #0C7885 99.86%), #0C7885 !important;
+        }
+
+        .lastMessageIndicator {
+            color: #0C7885 !important;
+>>>>>>> james
         }
 
         .messenger-list-item td span .lastMessageIndicator {
 
+<<<<<<< HEAD
             color: #584ED2 !important;
+=======
+            color: #0C7885 !important;
+>>>>>>> james
             font-weight: bold;
         }
 
         .messenger-sendCard button svg {
+<<<<<<< HEAD
             color: #584ED2 !important;
+=======
+            color: #0C7885 !important;
+>>>>>>> james
         }
 
         .messenger-list-item.m-list-active td span .lastMessageIndicator {
@@ -279,6 +319,7 @@
         .m-list-active,
         .m-list-active:hover,
         .m-list-active:focus {
+<<<<<<< HEAD
             background: linear-gradient(141.55deg, #6fd943 3.46%, #6fd943 99.86%), #6fd943 !important;
         }
 
@@ -288,11 +329,23 @@
 
         .messenger-favorites div.avatar {
             box-shadow: 0px 0px 0px 2px #6fd943 !important;
+=======
+            background: linear-gradient(141.55deg, #0C7885 3.46%, #0C7885 99.86%), #0C7885 !important;
+        }
+
+        .mc-sender p {
+            background: linear-gradient(141.55deg, #0C7885 3.46%, #0C7885 99.86%), #0C7885 !important;
+        }
+
+        .messenger-favorites div.avatar {
+            box-shadow: 0px 0px 0px 2px #0C7885 !important;
+>>>>>>> james
         }
 
         .messenger-listView-tabs a,
         .messenger-listView-tabs a:hover,
         .messenger-listView-tabs a:focus {
+<<<<<<< HEAD
             color: linear-gradient(141.55deg, #6fd943 3.46%, #6fd943 99.86%), #6fd943 !important;
         }
 
@@ -302,25 +355,52 @@
 
         .active-tab {
             border-bottom: 2px solid #6fd943 !important;
+=======
+            color: linear-gradient(141.55deg, #0C7885 3.46%, #0C7885 99.86%), #0C7885 !important;
+        }
+
+        .m-header svg {
+            color: #0C7885 !important;
+        }
+
+        .active-tab {
+            border-bottom: 2px solid #0C7885 !important;
+>>>>>>> james
         }
 
         .messenger-infoView nav a {
 
+<<<<<<< HEAD
             color: linear-gradient(141.55deg, #6fd943 3.46%, #6fd943 99.86%), #6fd943 !important;
         }
 
         .lastMessageIndicator {
             color: #6fd943 !important;
+=======
+            color: linear-gradient(141.55deg, #0C7885 3.46%, #0C7885 99.86%), #0C7885 !important;
+        }
+
+        .lastMessageIndicator {
+            color: #0C7885 !important;
+>>>>>>> james
         }
 
         .messenger-list-item td span .lastMessageIndicator {
 
+<<<<<<< HEAD
             color: #6fd943 !important;
+=======
+            color: #0C7885 !important;
+>>>>>>> james
             font-weight: bold;
         }
 
         .messenger-sendCard button svg {
+<<<<<<< HEAD
             color: #6fd943 !important;
+=======
+            color: #0C7885 !important;
+>>>>>>> james
         }
 
         .messenger-list-item.m-list-active td span .lastMessageIndicator {

@@ -69,7 +69,11 @@
                                 <th >{{ __('Duration') }}</th>
                                 <th >{{ __('Join URL') }}</th>
                                 <th >{{ __('Status') }}</th>
+<<<<<<< HEAD
                                 @if(\Auth::user()->type == 'company')
+=======
+                                @if(\Auth::user()->type == 'super admin')
+>>>>>>> james
                                     <th class="text-end"> {{ __('Action') }}</th>
                                 @endif
                             </tr>
@@ -124,7 +128,11 @@
                                             <span class="badge bg-danger p-2 px-3 rounded status_badge">{{__("End")}}</span>
                                         @endif
                                     </td>
+<<<<<<< HEAD
                                     @if(\Auth::user()->type == 'company')
+=======
+                                    @if(\Auth::user()->type == 'super admin')
+>>>>>>> james
                                         <td class="text-end">
                                             <div class="action-btn bg-danger ms-2">
                                                 {!! Form::open(['method' => 'DELETE', 'route' => ['zoom-meeting.destroy', $item->id],'id'=>'delete-form-'.$item->id]) !!}

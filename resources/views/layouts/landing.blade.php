@@ -60,9 +60,15 @@
     <link rel="stylesheet" href="{{ asset('assets/fonts/fontawesome.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/fonts/material.css') }}">
 
+<<<<<<< HEAD
     @if ( $setting['SITE_RTL'] == 'on')
         <link rel="stylesheet" href="{{ asset('assets/css/style-rtl.css')}}" id="main-style-link">
     @endif
+=======
+    {{-- @if ( $setting['SITE_RTL'] == 'on') --}}
+        <link rel="stylesheet" href="{{ asset('assets/css/style-rtl.css')}}" id="main-style-link">
+    {{-- @endif --}}
+>>>>>>> james
     @if($setting['cust_darklayout']=='on')
         <link rel="stylesheet" href="{{ asset('assets/css/style-dark.css')}}">
     @else
@@ -129,7 +135,11 @@
                         NIGERIA INSTITUTE OF TECHNOLOGY
                         </h2>
                         <p class="text-white">
+<<<<<<< HEAD
                         
+=======
+
+>>>>>>> james
 Zaria, Nigeria
                         </p>
                     </div>

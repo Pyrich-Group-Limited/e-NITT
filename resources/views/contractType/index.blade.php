@@ -30,7 +30,11 @@
                             <thead>
                             <tr>
                                 <th>{{__('Name')}}</th>
+<<<<<<< HEAD
                                 @if(\Auth::user()->type=='company')
+=======
+                                @if(\Auth::user()->type=='super admin')
+>>>>>>> james
                                     <th class="text-end ">{{__('Action')}}</th>
 
                                 @endif
@@ -42,7 +46,11 @@
                                 <tr class="font-style">
                                     <td>{{ $type->name }}</td>
 
+<<<<<<< HEAD
                                     @if(\Auth::user()->type=='company')
+=======
+                                    @if(\Auth::user()->type=='super admin')
+>>>>>>> james
                                         <td class="action text-end">
                                             <div class="action-btn bg-info ms-2">
                                                 <a href="#" class="mx-3 btn btn-sm d-inline-flex align-items-center" data-url="{{ route('contractType.edit',$type->id) }}" data-ajax-popup="true" data-size="md" data-bs-toggle="tooltip" title="{{__('Edit')}}" data-title="{{__('Edit Type')}}">

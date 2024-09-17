@@ -28,7 +28,11 @@
                     <table class="table datatable">
                             <thead>
                             <tr>
+<<<<<<< HEAD
                                 @role('company')
+=======
+                                @role('super admin')
+>>>>>>> james
                                 <th>{{__('Employee Name')}}</th>
                                 @endrole
                                 <th>{{__('Designation')}}</th>
@@ -43,7 +47,11 @@
                             <tbody class="font-style">
                             @foreach ($promotions as $promotion)
                                 <tr>
+<<<<<<< HEAD
                                     @role('company')
+=======
+                                    @role('super admin')
+>>>>>>> james
                                     <td>{{ !empty($promotion->employee())?$promotion->employee()->name:'' }}</td>
                                     @endrole
                                     <td>{{ !empty($promotion->designation())?$promotion->designation()->name:'' }}</td>
@@ -52,7 +60,11 @@
                                     <td>{{ $promotion->description }}</td>
                                     @if(Gate::check('edit promotion') || Gate::check('delete promotion'))
                                         <td>
+<<<<<<< HEAD
                                          
+=======
+
+>>>>>>> james
                                            @can('edit promotion')
                                                 <div class="action-btn bg-primary ms-2">
                                                     <a href="#" class="mx-3 btn btn-sm align-items-center" data-url="{{ URL::to('promotion/'.$promotion->id.'/edit') }}" data-ajax-popup="true" data-title="{{__('Edit Promotion')}}" data-bs-toggle="tooltip" title="{{__('Edit')}}" data-original-title="{{__('Edit')}}">
@@ -61,7 +73,11 @@
                                                 </div>
                                            @endcan
 
+<<<<<<< HEAD
                                         
+=======
+
+>>>>>>> james
 
                                             @can('delete promotion')
                                                 <div class="action-btn bg-danger ms-2">

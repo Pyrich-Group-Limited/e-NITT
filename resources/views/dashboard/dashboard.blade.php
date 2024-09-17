@@ -93,13 +93,21 @@
 @endpush
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{__('Dashboard')}}</a></li>
+<<<<<<< HEAD
     <li class="breadcrumb-item">{{__('HRM')}}</li>
+=======
+    <li class="breadcrumb-item"><b>Welcome </b>{{ Ucfirst(Auth::user()->name). "(" .Auth::user()->department->name. ")" }}</li>
+>>>>>>> james
 @endsection
 @php
     $setting = \App\Models\Utility::settings();
 @endphp
 @section('content')
+<<<<<<< HEAD
     @if(\Auth::user()->type != 'client' && \Auth::user()->type != 'company')
+=======
+    @if(\Auth::user()->type != 'client' && \Auth::user()->type != 'super admin')
+>>>>>>> james
         <div class="row">
             <div class="col-sm-12">
                 <div class="row">
@@ -245,7 +253,11 @@
                                 <div class="row g-3 flex-nowrap team-lists horizontal-scroll-cards">
                                     @foreach($notClockIns as $notClockIn)
                                         <div class="col-auto">
+<<<<<<< HEAD
                                             <img src="{{(!empty($notClockIn->user))? $notClockIn->user->profile : asset(Storage::url('uploads/avatar/avatar.png'))}}" alt="">
+=======
+                                            <img src="{{(!empty($notClockIn->user))? $notClockIn->user->profile : 'assets/images/user/avatar.png'}}" alt="">
+>>>>>>> james
                                             <p class="mt-2">{{ $notClockIn->name }}</p>
                                         </div>
                                     @endforeach

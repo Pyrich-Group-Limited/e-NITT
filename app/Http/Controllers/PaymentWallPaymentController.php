@@ -28,7 +28,11 @@ class PaymentWallPaymentController extends Controller
         if(Auth::check()){
             $user = Auth::user();
         }
+<<<<<<< HEAD
         if($user->type == 'company')
+=======
+        if($user->type == 'super admin')
+>>>>>>> james
         {
             $payment_setting = Utility::getAdminPaymentSetting();
         }

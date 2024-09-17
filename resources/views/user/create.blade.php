@@ -23,7 +23,11 @@
                 @enderror
             </div>
         </div>
+<<<<<<< HEAD
         @if(\Auth::user()->type != 'super admin')
+=======
+        @if(\Auth::user()->type == 'super admin' || \Auth::user()->type == 'hrm')
+>>>>>>> james
             <div class="form-group col-md-6">
                 {{ Form::label('role', __('User Role'),['class'=>'form-label']) }}
                 {!! Form::select('role', $roles, null,array('class' => 'form-control select','required'=>'required')) !!}
@@ -33,8 +37,13 @@
                 </small>
                 @enderror
             </div>
+<<<<<<< HEAD
         @elseif(\Auth::user()->type == 'company')
             {!! Form::hidden('role', 'company', null,array('class' => 'form-control select2','required'=>'required')) !!}
+=======
+        @else
+            {!! Form::hidden('role', 'super admin', null,array('class' => 'form-control select2','required'=>'required')) !!}
+>>>>>>> james
         @endif
         <div class="col-md-6">
             <div class="form-group">
@@ -47,6 +56,49 @@
                 @enderror
             </div>
         </div>
+<<<<<<< HEAD
+=======
+        <div class="form-group col-md-6">
+            {{ Form::label('designation', __('Designation'),['class'=>'form-label']) }}
+            {!! Form::select('designation', $designations, null,array('class' => 'form-control select','required'=>'required')) !!}
+            @error('designation')
+            <small class="invalid-role" role="alert">
+                <strong class="text-danger">{{ $message }}</strong>
+            </small>
+            @enderror
+        </div>
+
+
+        <div class="form-group col-md-6">
+            {{ Form::label('level', __('Level'),['class'=>'form-label']) }}
+            {!! Form::select('level', ['Level 07','Level 08','Level 09','Level 11','Level 12','Level 13','Level 14','Level 15'], null,array('class' => 'form-control select','required'=>'required')) !!}
+            @error('Level')
+            <small class="invalid-role" role="alert">
+                <strong class="text-danger">{{ $message }}</strong>
+            </small>
+            @enderror
+        </div>
+
+        <div class="form-group col-md-6">
+            {{ Form::label('department', __('Department'),['class'=>'form-label']) }}
+            {!! Form::select('department', $departments, null,array('class' => 'form-control select','required'=>'required','id' =>'sel_department')) !!}
+            @error('Department')
+            <small class="invalid-role" role="alert">
+                <strong class="text-danger">{{ $message }}</strong>
+            </small>
+            @enderror
+        </div>
+
+        <div class="form-group col-md-6">
+            {{ Form::label('unit', __('Unit'),['class'=>'form-label']) }}
+            {!! Form::select('unit', $roles, null,array('class' => 'form-control select','required'=>'required','id'=>'department_units')) !!}
+            @error('Unit')
+            <small class="invalid-role" role="alert">
+                <strong class="text-danger">{{ $message }}</strong>
+            </small>
+            @enderror
+        </div>
+>>>>>>> james
         @if(!$customFields->isEmpty())
             <div class="col-md-6">
                 <div class="tab-pane fade show" id="tab-2" role="tabpanel">
@@ -62,5 +114,10 @@
     <input type="button" value="{{__('Cancel')}}" class="btn  btn-light" data-bs-dismiss="modal">
     <input type="submit" value="{{__('Create')}}" class="btn  btn-primary">
 </div>
+<<<<<<< HEAD
 
 {{Form::close()}}
+=======
+{{Form::close()}}
+
+>>>>>>> james

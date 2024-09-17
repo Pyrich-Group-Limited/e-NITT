@@ -35,7 +35,11 @@ class ProjectReportController extends Controller
             $status=[];
 
         }
+<<<<<<< HEAD
         elseif(\Auth::user()->type == 'company')
+=======
+        elseif(\Auth::user()->type == 'super admin')
+>>>>>>> james
         {
 
             if(isset($request->all_users)&& !empty($request->all_users)){
@@ -83,7 +87,11 @@ class ProjectReportController extends Controller
 
             if(\Auth::user()->type == 'super admin')
             {
+<<<<<<< HEAD
                 $users = User::where('created_by', '=', $user->creatorId())->where('type', '=', 'company')->get();
+=======
+                $users = User::where('created_by', '=', $user->creatorId())->where('type', '=', 'super admin')->get();
+>>>>>>> james
             }
             else
             {

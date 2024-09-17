@@ -28,7 +28,11 @@
                     <table class="table datatable">
                             <thead>
                             <tr>
+<<<<<<< HEAD
                                 @role('company')
+=======
+                                @role('super admin')
+>>>>>>> james
                                 <th>{{__('Employee Name')}}</th>
                                 @endrole
                                 <th>{{__('Start Date')}}</th>
@@ -44,7 +48,11 @@
                             <tbody class="font-style">
                             @foreach ($travels as $travel)
                                 <tr>
+<<<<<<< HEAD
                                     @role('company')
+=======
+                                    @role('super admin')
+>>>>>>> james
                                     <td>{{ !empty($travel->employee())?$travel->employee()->name:'' }}</td>
                                     @endrole
                                     <td>{{ \Auth::user()->dateFormat( $travel->start_date) }}</td>

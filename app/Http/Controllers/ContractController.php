@@ -23,7 +23,11 @@ class ContractController extends Controller
         if(\Auth::user()->can('manage contract'))
         {
 
+<<<<<<< HEAD
             if(\Auth::user()->type=='company')
+=======
+            if(\Auth::user()->type=='super admin')
+>>>>>>> james
             {
 
                 $contracts   = Contract::where('created_by', '=', \Auth::user()->creatorId())->get();
@@ -293,9 +297,15 @@ class ContractController extends Controller
 
     public function grid()
     {
+<<<<<<< HEAD
         if(\Auth::user()->type == 'company' || \Auth::user()->type == 'client')
         {
             if(\Auth::user()->type == 'company')
+=======
+        if(\Auth::user()->type == 'super admin' || \Auth::user()->type == 'client')
+        {
+            if(\Auth::user()->type == 'super admin')
+>>>>>>> james
             {
                 $contracts = Contract::where('created_by', '=', \Auth::user()->creatorId())->get();
             }
@@ -321,7 +331,11 @@ class ContractController extends Controller
     public function fileUpload($id, Request $request)
     {
 
+<<<<<<< HEAD
         if(\Auth::user()->type == 'company' || \Auth::user()->type == 'client' )
+=======
+        if(\Auth::user()->type == 'super admin' || \Auth::user()->type == 'client' )
+>>>>>>> james
         {
             $contract = Contract::find($id);
             $request->validate(['file' => 'required']);
@@ -379,7 +393,11 @@ class ContractController extends Controller
     {
 
         $contract        =Contract::find($id);
+<<<<<<< HEAD
         if(\Auth::user()->type == 'company')
+=======
+        if(\Auth::user()->type == 'super admin')
+>>>>>>> james
         {
             $file = Contract_attachment::find($file_id);
             if($file)
@@ -455,7 +473,11 @@ class ContractController extends Controller
 
     public function contract_descriptionStore($id, Request $request)
     {
+<<<<<<< HEAD
         if(\Auth::user()->type == 'company')
+=======
+        if(\Auth::user()->type == 'super admin')
+>>>>>>> james
         {
             $contract        =Contract::find($id);
             if($contract->created_by == \Auth::user()->creatorId())
@@ -583,7 +605,11 @@ class ContractController extends Controller
     public function copycontractstore(Request $request)
     {
 
+<<<<<<< HEAD
         if(\Auth::user()->type == 'company')
+=======
+        if(\Auth::user()->type == 'super admin')
+>>>>>>> james
         {
             $rules = [
                 'client' => 'required',
@@ -698,7 +724,11 @@ class ContractController extends Controller
     {
         $contract              = Contract::find($request->contract_id);
 
+<<<<<<< HEAD
         if(\Auth::user()->type == 'company'){
+=======
+        if(\Auth::user()->type == 'super admin'){
+>>>>>>> james
             $contract->company_signature       = $request->company_signature;
         }
         if(\Auth::user()->type == 'client'){

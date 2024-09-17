@@ -6,7 +6,11 @@
             <input type="hidden" name="contract_id" value="{{$contract->id}}">
             <div class="form-control" >
                 <canvas id="signature-pad" class="signature-pad" height=200 ></canvas>
+<<<<<<< HEAD
                 <input type="hidden" @if(Auth::user()->type == 'company')name="company_signature" @elseif(Auth::user()->type == 'client' ) name="client_signature" @endif id="SignupImage1">
+=======
+                <input type="hidden" @if(Auth::user()->type == 'super admin')name="company_signature" @elseif(Auth::user()->type == 'client' ) name="client_signature" @endif id="SignupImage1">
+>>>>>>> james
             </div>
             <div class="mt-1">
                <button type="button" class="btn-sm btn-danger" id="clearSig">{{__('Clear')}}</button>
@@ -35,7 +39,11 @@
 
 
                 this.clearButton.addEventListener('click', function (event) {
+<<<<<<< HEAD
                 
+=======
+
+>>>>>>> james
                     signaturePad.clear();
                 });
 
@@ -56,7 +64,11 @@
                     },
                     error: function (data) {
 
+<<<<<<< HEAD
                
+=======
+
+>>>>>>> james
                         // data = data.responseJSON;
                         // if (data.message) {
                         //     show_toastr('error', data.message);
@@ -68,9 +80,17 @@
 
 
                 });
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> james
         }
     };
     signature.init();
 
+<<<<<<< HEAD
 </script>
+=======
+</script>
+>>>>>>> james

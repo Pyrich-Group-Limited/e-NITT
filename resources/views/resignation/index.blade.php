@@ -27,7 +27,11 @@
                         <table class="table datatable">
                             <thead>
                             <tr>
+<<<<<<< HEAD
                                 @role('company')
+=======
+                                @role('super admin')
+>>>>>>> james
                                 <th>{{__('Employee Name')}}</th>
                                 @endrole
                                 <th>{{__('Resignation Date')}}</th>
@@ -41,7 +45,11 @@
                             <tbody class="font-style">
                             @foreach ($resignations as $resignation)
                                 <tr>
+<<<<<<< HEAD
                                     @role('company')
+=======
+                                    @role('super admin')
+>>>>>>> james
                                     <td>{{ !empty($resignation->employee())?$resignation->employee()->name:'' }}</td>
                                     @endrole
                                     <td>{{  \Auth::user()->dateFormat($resignation->notice_date) }}</td>

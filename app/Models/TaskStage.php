@@ -42,7 +42,11 @@ class TaskStage extends Model
         $arrTask = [];
 
         $i = 0;
+<<<<<<< HEAD
         if($usr->type == 'company')
+=======
+        if($usr->type == 'super admin')
+>>>>>>> james
         {
             foreach($stages as $key => $stage)
             {

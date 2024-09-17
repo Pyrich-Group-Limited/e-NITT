@@ -69,7 +69,11 @@ class ZoomMeetingController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< HEAD
         if(\Auth::user()->type == 'company')
+=======
+        if(\Auth::user()->type == 'super admin')
+>>>>>>> james
         {
             $validator = \Validator::make($request->all(), [
                 'title' => 'required',
@@ -247,7 +251,11 @@ class ZoomMeetingController extends Controller
     {
         $user      = \Auth::user();
         $transdate = date('Y-m-d', time());
+<<<<<<< HEAD
         if($user->type == 'company' || $user->type == 'HR' || $user->type == 'accountant')
+=======
+        if($user->type == 'super admin' || $user->type == 'HR' || $user->type == 'accountant')
+>>>>>>> james
         {
             $zoomMeetings = ZoomMeeting::where('created_by', '=', \Auth::user()->creatorId())->get();
         }

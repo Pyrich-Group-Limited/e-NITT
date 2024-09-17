@@ -2824,7 +2824,11 @@ class Utility extends Model
     {
         $stages = [
             'Applied',
+<<<<<<< HEAD
             'Phone Screen',
+=======
+            // 'Phone Screen',
+>>>>>>> james
             'Interview',
             'Hired',
             'Rejected',
@@ -3223,7 +3227,11 @@ class Utility extends Model
                 Permission::create(['name' => $ap]);
             }
         }
+<<<<<<< HEAD
         $companyRole = Role::where('name', 'LIKE', 'company')->first();
+=======
+        $companyRole = Role::where('name', 'LIKE', 'super admin')->first();
+>>>>>>> james
 
         $companyPermissions   = $companyRole->getPermissionNames()->toArray();
         $companyNewPermission = [
@@ -3750,7 +3758,11 @@ class Utility extends Model
         }else
         {
 
+<<<<<<< HEAD
             $user = User::where('type','company')->first();
+=======
+            $user = User::where('type','super admin')->first();
+>>>>>>> james
             $setting = DB::table('settings')->where('created_by', $user->id)->pluck('value','name')->toArray();
         }
 
@@ -4866,7 +4878,11 @@ class Utility extends Model
         $journalItem->where('journal_items.created_at', '<=', $end);
         $journalItem->groupBy('account');
         $journalItem = $journalItem->get()->toArray();
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> james
         $invoice = InvoiceProduct::select('chart_of_accounts.id','chart_of_accounts.code','chart_of_accounts.name' , \DB::raw('0 as totalDebit'), \DB::raw('sum(price*invoice_products.quantity) as totalCredit'));
         $invoice->leftjoin('product_services','product_services.id','invoice_products.product_id');
         $invoice->leftjoin('chart_of_accounts', 'product_services.sale_chartaccount_id', 'chart_of_accounts.id');
@@ -4896,7 +4912,11 @@ class Utility extends Model
         $bill->where('bill_products.created_at', '<=', $end);
         $bill->groupBy('product_services.expense_chartaccount_id');
         $bill = $bill->get()->toArray();
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> james
         $billAccount = BillAccount::select('chart_of_accounts.id','chart_of_accounts.code','chart_of_accounts.name' , \DB::raw('sum(price) as totalDebit'), \DB::raw('0 as totalCredit'));
         $billAccount->leftjoin('chart_of_accounts', 'bill_accounts.chart_account_id', 'chart_of_accounts.id');
         $billAccount->where('chart_of_accounts.type',$account_id);

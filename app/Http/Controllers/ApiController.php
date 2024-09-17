@@ -60,7 +60,11 @@ class ApiController extends Controller
 
         $user = auth()->user();
 
+<<<<<<< HEAD
         if($user->type!='company')
+=======
+        if($user->type!='super admin')
+>>>>>>> james
         {
             $assign_pro_ids = ProjectUser::where('user_id',$user->id)->pluck('project_id');
 

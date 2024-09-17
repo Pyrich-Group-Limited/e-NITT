@@ -137,7 +137,11 @@ a.b-brand {
 
 .choose-files div {
     color: #fff;
+<<<<<<< HEAD
     background: #584ED2 !important;
+=======
+    background: #0C7885 !important;
+>>>>>>> james
     border: none;
     border-radius: 10px;
     padding: 8px 15px;
@@ -999,8 +1003,13 @@ body.theme-2 .cat-list-btn .btn-primary {
     border-color: #fff !important;
 }
 body.theme-2 .cat-list-btn .cat-active .btn-primary {
+<<<<<<< HEAD
     background-color: #584ED2 !important;
     border-color: #584ED2 !important;
+=======
+    background-color: #0C7885 !important;
+    border-color: #0C7885 !important;
+>>>>>>> james
     color: #fff !important;
 }
 
@@ -1009,8 +1018,13 @@ body.theme-3 .cat-list-btn .btn-primary {
     border-color: #fff !important;
 }
 body.theme-3 .cat-list-btn .cat-active .btn-primary {
+<<<<<<< HEAD
     background-color: #6fd943 !important;
     border-color: #6fd943 !important;
+=======
+    background-color: #0C7885 !important;
+    border-color: #0C7885 !important;
+>>>>>>> james
     color: #fff !important;
 }
 
@@ -1321,7 +1335,11 @@ body.theme-10 .cat-list-btn .cat-active .btn-primary {
 }
 
 .circular-progressbar .circular-chart.green .circle {
+<<<<<<< HEAD
     stroke: #6fd943;
+=======
+    stroke: #0C7885;
+>>>>>>> james
 }
 
 .circular-progressbar .circular-chart.blue .circle {
@@ -1379,7 +1397,11 @@ body.theme-10 .cat-list-btn .cat-active .btn-primary {
 }
 
 .circular-progressbar .circular-chart.green .circle {
+<<<<<<< HEAD
     stroke: #6fd943;
+=======
+    stroke: #0C7885;
+>>>>>>> james
 }
 
 .circular-progressbar .circular-chart.blue .circle {
@@ -1496,7 +1518,11 @@ body.theme-10 .cat-list-btn .cat-active .btn-primary {
     -moz-border-radius: 15px;
     -ms-border-radius: 15px;
     -o-border-radius: 15px;
+<<<<<<< HEAD
     border: 1px solid #6FD943;
+=======
+    border: 1px solid #0C7885;
+>>>>>>> james
 }
 
 .placedjob-section {

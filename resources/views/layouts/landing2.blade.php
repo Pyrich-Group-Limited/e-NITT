@@ -69,9 +69,15 @@
     <link rel="stylesheet" href="{{asset('assets/fonts/material.css')}}">
 
     <!-- vendor css -->
+<<<<<<< HEAD
     @if ($SITE_RTL == 'on')
         <link rel="stylesheet" href="{{ asset('assets/css/style-rtl.css') }}">
     @endif
+=======
+    {{-- @if ($SITE_RTL == 'on') --}}
+        <link rel="stylesheet" href="{{ asset('assets/css/style-rtl.css') }}">
+    {{-- @endif --}}
+>>>>>>> james
     @if ($setting['cust_darklayout'] == 'on')
         <link rel="stylesheet" href="{{ asset('assets/css/style-dark.css') }}">
     @else

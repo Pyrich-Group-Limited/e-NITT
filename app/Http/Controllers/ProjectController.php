@@ -103,7 +103,11 @@ class ProjectController extends Controller
             $project['copylinksetting']   = '{"member":"on","milestone":"off","basic_details":"on","activity":"off","attachment":"on","bug_report":"on","task":"off","tracker_details":"off","timesheet":"off" ,"password_protected":"off"}';
 
             $project->save();
+<<<<<<< HEAD
             if(\Auth::user()->type=='company'){
+=======
+            if(\Auth::user()->type=='super admin'){
+>>>>>>> james
 
                 ProjectUser::create(
                     [
@@ -804,7 +808,11 @@ class ProjectController extends Controller
             if(!empty($project) && $project->created_by == Auth::user()->creatorId())
             {
 
+<<<<<<< HEAD
                 if($user->type != 'company')
+=======
+                if($user->type != 'super admin')
+>>>>>>> james
                 {
                     if(\Auth::user()->type == 'client'){
                       $bugs = Bug::where('project_id',$project->id)->get();
@@ -813,7 +821,11 @@ class ProjectController extends Controller
                     }
                 }
 
+<<<<<<< HEAD
                 if($user->type == 'company')
+=======
+                if($user->type == 'super admin')
+>>>>>>> james
                 {
                     $bugs = Bug::where('project_id', '=', $project_id)->get();
                 }
@@ -1027,12 +1039,20 @@ class ProjectController extends Controller
 
             if(!empty($project) && $project->created_by == $user->creatorId())
             {
+<<<<<<< HEAD
                 if($user->type != 'company')
+=======
+                if($user->type != 'super admin')
+>>>>>>> james
                 {
                     $bugStatus = BugStatus::where('created_by', '=', Auth::user()->creatorId())->orderBy('order', 'ASC')->get();
                 }
 
+<<<<<<< HEAD
                 if($user->type == 'company' || $user->type == 'client')
+=======
+                if($user->type == 'super admin' || $user->type == 'client')
+>>>>>>> james
                 {
                     $bugStatus = BugStatus::where('created_by', '=', Auth::user()->creatorId())->orderBy('order', 'ASC')->get();
                 }

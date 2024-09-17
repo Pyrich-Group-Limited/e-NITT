@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Local .terraform directories
 **/.terraform/*
 
@@ -35,3 +36,24 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+=======
+/.phpunit.cache
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+auth.json
+npm-debug.log
+yarn-error.log
+/.fleet
+/.idea
+/.vscode
+>>>>>>> james

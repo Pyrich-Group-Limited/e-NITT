@@ -35,7 +35,11 @@
     </script>
 @endpush
 @section('page-title')
+<<<<<<< HEAD
     @if(\Auth::user()->type=='company')
+=======
+    @if(\Auth::user()->type=='super admin')
+>>>>>>> james
         {{__('Email Notification')}}
     @else
         {{__('Email Templates')}}
@@ -43,7 +47,11 @@
 @endsection
 @section('title')
     <div class="d-inline-block">
+<<<<<<< HEAD
         @if(\Auth::user()->type=='company')
+=======
+        @if(\Auth::user()->type=='super admin')
+>>>>>>> james
             <h5 class="h4 d-inline-block font-weight-400 mb-0">{{__('Email Notification')}}</h5>
         @else
             <h5 class="h4 d-inline-block font-weight-400 mb-0">{{__('Email Templates')}}</h5>
@@ -52,7 +60,11 @@
 @endsection
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{__('Dashboard')}}</a></li>
+<<<<<<< HEAD
     @if(\Auth::user()->type=='company')
+=======
+    @if(\Auth::user()->type=='super admin')
+>>>>>>> james
         <li class="breadcrumb-item active" aria-current="page">{{__('Email Notification')}}</li>
     @else
         <li class="breadcrumb-item active" aria-current="page">{{__('Email Template')}}</li>
@@ -78,7 +90,11 @@
                         <thead>
                         <tr>
                             <th scope="col" class="sort" data-sort="name"> {{__('Name')}}</th>
+<<<<<<< HEAD
                             @if(\Auth::user()->type=='company')
+=======
+                            @if(\Auth::user()->type=='super admin')
+>>>>>>> james
                                 <th class="text-end">{{__('On / Off')}}</th>
                             @else
                                 <th class="text-end">{{__('Action')}}</th>
@@ -101,7 +117,11 @@
                                         </div>
                                     @endif
 
+<<<<<<< HEAD
                                     @if(\Auth::user()->type=='company')
+=======
+                                    @if(\Auth::user()->type=='super admin')
+>>>>>>> james
                                         <div class="text-end">
                                             <div class="form-check form-switch d-inline-block">
                                                 <label class="form-check-label form-switch">

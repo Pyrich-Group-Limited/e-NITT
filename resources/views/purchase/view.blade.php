@@ -94,7 +94,11 @@
         @endif
     @endcan
 
+<<<<<<< HEAD
     @if(\Auth::user()->type=='company')
+=======
+    @if(\Auth::user()->type=='super admin')
+>>>>>>> james
         @if($purchase->status!=0)
             <div class="row justify-content-between align-items-center mb-3">
                 <div class="col-md-12 d-flex align-items-center justify-content-between justify-content-md-end">

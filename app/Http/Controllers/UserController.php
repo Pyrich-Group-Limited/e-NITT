@@ -6,7 +6,15 @@ use App\Models\CustomField;
 use App\Models\Employee;
 use App\Models\LoginDetail;
 use App\Models\User;
+<<<<<<< HEAD
 use App\Models\UserCompany;
+=======
+use App\Models\Department;
+use App\Models\UserCompany;
+use App\Models\Designation;
+use App\Models\Unit;
+use App\Models\Subunit;
+>>>>>>> james
 use Auth;
 use File;
 use App\Models\Utility;
@@ -29,8 +37,17 @@ class  UserController extends Controller
         if(\Auth::user()->can('manage user'))
         {
             $users = User::where('created_by', '=', $user->creatorId())->where('type', '!=', 'client')->get();
+<<<<<<< HEAD
 
             return view('user.index')->with('users', $users);
+=======
+            $customFields = CustomField::where('created_by', '=', \Auth::user()->creatorId())->where('module', '=', 'user')->get();
+            $user  = \Auth::user();
+            $roles = Role::all()->pluck('name', 'id');
+            $departments = Department::all()->pluck('name', 'id');
+            $designations = Designation::all()->pluck('name', 'id');
+            return view('user.index',compact('designations','roles','departments','customFields'))->with('users', $users);
+>>>>>>> james
         }
         else
         {
@@ -39,15 +56,42 @@ class  UserController extends Controller
 
     }
 
+<<<<<<< HEAD
+=======
+    public function getDepartments($id){
+         echo $units = json_encode(Unit::where('department_id',$id)->get());
+        //  return $units;
+    }
+
+    public function getSubUnits($id){
+        $subunits = Subunit::where('unit_id',$id)->get();
+
+        if(count($subunits)>0){
+            echo json_encode($subunits);
+        }else{
+            echo 0;
+        }
+   }
+
+>>>>>>> james
     public function create()
     {
 
         $customFields = CustomField::where('created_by', '=', \Auth::user()->creatorId())->where('module', '=', 'user')->get();
         $user  = \Auth::user();
+<<<<<<< HEAD
         $roles = Role::where('created_by', '=', $user->creatorId())->where('name','!=','client')->get()->pluck('name', 'id');
         if(\Auth::user()->can('create user'))
         {
             return view('user.create', compact('roles', 'customFields'));
+=======
+        $roles = Role::all()->pluck('name', 'id');
+        $departments = Department::all()->pluck('name', 'id');
+        $designations = Designation::all()->pluck('name', 'id');
+        if(\Auth::user()->can('create user'))
+        {
+            return view('user.create', compact('roles', 'customFields','departments','designations'));
+>>>>>>> james
         }
         else
         {
@@ -66,6 +110,13 @@ class  UserController extends Controller
                                    'email' => 'required|email|unique:users',
                                    'password' => 'required|min:6',
                                    'role' => 'required',
+<<<<<<< HEAD
+=======
+                                   'designation' => 'required',
+                                   'department' => 'required',
+                                   'unit' => 'required',
+                                   'level' => 'required',
+>>>>>>> james
                                ]
             );
             if($validator->fails())
@@ -80,6 +131,13 @@ class  UserController extends Controller
             $psw                   = $request->password;
             $request['password']   = Hash::make($request->password);
             $request['type']       = $role_r->name;
+<<<<<<< HEAD
+=======
+            $request['designation']       = $request->designation;
+            $request['department_id']       = $request->department;
+            $request['unit_id']       = $request->unit;
+            $request['level']       = $request->level;
+>>>>>>> james
             $request['lang']       = !empty($default_language) ? $default_language->value : 'en';
             $request['created_by'] = \Auth::user()->creatorId();
             $user = User::create($request->all());
@@ -143,7 +201,11 @@ class  UserController extends Controller
 
         if(\Auth::user()->can('edit user'))
         {
+<<<<<<< HEAD
             if(\Auth::user()->type == 'company')
+=======
+            if(\Auth::user()->type == 'super admin')
+>>>>>>> james
             {
                 $user = User::findOrFail($id);
                 $validator = \Validator::make(
@@ -213,7 +275,11 @@ class  UserController extends Controller
             $user = User::find($id);
             if($user)
             {
+<<<<<<< HEAD
                 if(\Auth::user()->type == 'company')
+=======
+                if(\Auth::user()->type == 'super admin')
+>>>>>>> james
                 {
                     if($user->delete_status == 0)
                     {
@@ -225,7 +291,11 @@ class  UserController extends Controller
                     }
                     $user->save();
                 }
+<<<<<<< HEAD
                 if(\Auth::user()->type == 'company')
+=======
+                if(\Auth::user()->type == 'super admin')
+>>>>>>> james
                 {
                     $employee = Employee::where(['user_id' => $user->id])->delete();
                     if($employee){
