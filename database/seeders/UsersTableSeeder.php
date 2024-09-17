@@ -3645,7 +3645,7 @@ class UsersTableSeeder extends Seeder
         $company = User::create(
             [
                 'name' => 'company',
-                'email' => 'company@example.com',
+                'email' => 'company@nitt.gov.ng',
                 'password' => Hash::make('1234'),
                 'type' => 'company',
                 'default_pipeline' => 1,
@@ -3799,7 +3799,7 @@ class UsersTableSeeder extends Seeder
         $accountant = User::create(
             [
                 'name' => 'accountant',
-                'email' => 'accountant@example.com',
+                'email' => 'accountant@nitt.gov.ng',
                 'password' => Hash::make('1234'),
                 'type' => 'accountant',
                 'default_pipeline' => 1,
@@ -3865,7 +3865,7 @@ class UsersTableSeeder extends Seeder
         $client = User::create(
             [
                 'name' => 'client',
-                'email' => 'client@example.com',
+                'email' => 'client@nitt.gov.ng',
                 'password' => Hash::make('1234'),
                 'type' => 'client',
                 'default_pipeline' => 1,
